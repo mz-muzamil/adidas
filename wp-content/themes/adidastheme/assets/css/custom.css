@@ -1,0 +1,597 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	outline: none !important;
+}
+
+.clear {
+	clear: both;
+	font-size: 0;
+	line-height: 0;
+}
+
+a {
+	color: #409391;
+	text-decoration: none !important;
+}
+
+a:hover {
+	color: #106361;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
+	font-family: 'Oswald', sans-serif;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.main {
+	flex: 1;
+	position: relative;
+	padding: 0 0 40px 0;
+	float: left;
+	width: 100%;
+}
+
+@media all and (-ms-high-contrast: none) {
+	.main {
+		flex-basis: auto;
+	}
+	/* IE10 */
+	*::-ms-backdrop, .main {
+		flex-basis: auto;
+	}
+	/* IE11 */
+}
+.header-top-strip{
+	background-color: #fff;
+}
+.text-green{
+	color: #217F40 !important;
+}
+.full-width{
+	float: left;
+	width: 100%;
+}
+body {
+	font-size: 16px;
+	line-height: 1.4;
+	position: relative;
+	overflow-x: hidden;
+	letter-spacing: 1px;
+	font-family: 'Roboto', sans-serif;
+}
+.navigation.navbar{
+	float: left;
+	width: 100%;
+	padding: 0;
+	background: url("../images/pettern-3.png") repeat center center;
+}
+.navigation.navbar ul.menu{
+	padding: 0;
+	float: left;
+	margin: 0;
+}
+.navigation.navbar ul.menu li.menu-item {
+	list-style: none;
+	float: left;
+	position: relative;
+	z-index: 99;
+}
+.navigation.navbar ul.menu li.menu-item:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	z-index: -1;
+	background: url("../images/pettern-1.png") repeat center center fixed;
+	clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+}
+.navigation.navbar ul.menu li.menu-item:hover:after{
+	display: block;
+}
+.navigation.navbar ul.menu li.menu-item a{
+	padding: 20px 25px;
+	font-size: 18px;
+	font-weight: 600;
+	display: block;
+	text-transform: uppercase;
+	color: #fff;
+	font-family: 'Oswald', sans-serif;
+}
+.navigation.navbar ul.menu li.menu-item ul{
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	padding: 5px 0;
+	width: 200px;
+	background: url("../images/pettern-1.png") repeat center center fixed;
+}
+.navigation.navbar ul.menu li.menu-item ul li{
+	width: 100%;
+}
+.navigation.navbar ul.menu li.menu-item ul li a{
+	padding: 10px 20px;
+	font-size: 16px;
+	display: block;
+	position: relative;
+}
+.navigation.navbar ul.menu li.menu-item:hover > ul{
+	display: block;
+}
+.navigation.navbar ul.menu li.menu-item ul li ul{
+	left: 100%;
+	top: 0;
+}
+.navigation.navbar ul.menu li.menu-item ul li:hover:after{
+	display: none;
+}
+.navigation.navbar ul.menu li.menu-item ul li:hover{
+	background: url("../images/pettern-3.png") repeat center center fixed;
+}
+.navigation.navbar ul.menu li.menu-item:hover ul li.menu-item-has-children a{
+	position: relative;
+}
+.navigation.navbar ul.menu li.menu-item:hover ul li.menu-item-has-children > a::after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	width: 10px;
+	height: 16px;
+	background: url("../images/icon-next.png") no-repeat center center fixed;
+	transform: translateY(-50%);
+}
+.middle-header{
+	padding: 20px 0;
+}
+.middle-header .navbar-toggler{
+	display: none;
+}
+
+.middle-header .menu-top-header-menu-container{
+	float: right;
+	overflow: hidden;
+}
+.middle-header .menu-top-header-menu-container .menu{
+	position: relative;
+}
+.middle-header ul.menu{
+	padding: 0;
+	float: left;
+	margin: 0;
+}
+.middle-header ul.menu li.menu-item {
+	list-style: none;
+	float: left;
+	position: relative;
+	z-index: 99;
+}
+.header .middle-header ul.menu li.menu-item:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background: url("../images/pettern-3.png") repeat center center;
+	clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+}
+
+.middle-header ul.menu li.menu-item a{
+	padding: 10px 40px;
+	font-size: 18px;
+	font-weight: 600;
+	display: block;
+	text-transform: uppercase;
+	color: #fff;
+	font-family: 'Oswald', sans-serif;
+}
+
+
+.banner{
+	float: left;
+	width: 100%;
+	position: relative;
+	margin-bottom: 40px;
+}
+.banner .owl-carousel .item{
+	position: relative;
+	padding: 13.5% 5%;
+}
+.banner .owl-carousel .item::after{
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #012C1F;
+	opacity: 0.8;
+}
+.banner .owl-carousel .item .container{
+	position: relative;
+	z-index: 99;
+}
+.owl-carousel .owl-stage{
+	z-index: 4;
+}
+.banner .owl-dots{
+	position: absolute;
+	bottom: 100px;
+	width: 100%;
+	z-index: 3;
+}
+.owl-theme .owl-dots .owl-dot span {
+	width: 20px;
+	height: 7px;
+	margin: 4px;
+	border-radius: 0;
+}
+.owl-nav{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	z-index: 3;
+	height: 0;
+	margin-top: 0 !important;
+	transform: translateY(-50%);
+}
+.owl-nav .owl-prev,
+.owl-nav .owl-next{
+	position: absolute !important;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.owl-nav .owl-prev{
+	float: left;
+	left: 200px;
+}
+.owl-nav .owl-next{
+	float: right;
+	right: 200px;
+}
+.owl-theme .owl-nav [class*="owl-"],
+.owl-theme .owl-nav [class*="owl-"]:hover {
+	color: #fff !important;
+	background: transparent;
+	font-size: 50px !important;
+	position: relative;
+}
+.owl-carousel .owl-item .iconplay a{
+	display: inline-block;
+	width: 87px;
+	height: 87px;
+	border-radius: 100%;
+	background-color: #012C1F;
+	opacity: 0.8;
+	text-align: center;
+	line-height: 87px;
+}
+.owl-carousel .owl-item .iconplay img{
+	width: auto;
+	display: inline-block;
+	position: relative;
+	left: 3px;
+}
+.sports-carousel{
+	padding: 0 5% 10px 5%;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.sports-carousel  .owl-nav .owl-prev{
+	left: 0;
+}
+.sports-carousel  .owl-nav .owl-next{
+	right: 0;
+}
+.post-block{
+	float: left;
+	width: 100%;
+	padding: 10px 10px 20px 10px;
+	background: url("../images/pettern-3.png") repeat center center;
+}
+.post-block .wp-post-image{
+	width: 100%;
+	height: 170px;
+}
+.sports-carousel .post-block a{
+	text-decoration: underline !important;
+}
+.sports-carousel.owl-theme .owl-dots{
+	margin-top: 20px;
+}
+.custom-article {
+	float: left;
+	width: 100%;
+}
+.custom-article figure{
+	float: left;
+	width: 144px;
+	height: 144px;
+}
+.custom-article figure img{
+	width: 100%;
+	height: 100%;
+}
+.custom-article .text{
+	margin: 0 0 0 170px;
+}
+.post-options{
+	float: left;
+	width: 100%;
+	padding: 6px;
+	color: green;
+	background-color: #fff;
+	border-bottom: 1px solid #fff;
+	margin-bottom: 20px;
+}
+.search-form{
+	position: relative;
+}
+.search-form label{
+	width: 255px;
+}
+.search-form .search-field{
+	width: 100%;
+	height: 42px;
+	font-size: 16px;
+	font-family: 'Oswald', sans-serif;
+	padding: 5px 40px 5px 5px;
+	background-color: #012C1F;
+	text-transform: uppercase;
+	border: none;
+	color: #fff;
+}
+.middle-header .search-form{
+	display: none;
+}
+.search-submit{
+	position: absolute;
+	top: 0;
+	width: 40px;
+	height: 100%;
+	right: 0;
+	background-color: transparent;
+	border: none;
+	color: transparent;
+	background: url("../images/icon-search.png") no-repeat center center;
+	
+}
+.card.sticky{
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	background: url("../images/pettern-1.png") repeat center center;
+}
+.card.sticky img{
+	width: 100%;
+	height: 162px;
+}
+.card.sticky .card-body{
+	padding-bottom: 30px;
+}
+.home-blogs .card h4{
+	font-size: 20px;
+}
+.home-blogs .card p{
+	color: rgba(255, 255, 255, 0.7);
+}
+.home-blogs .card.sticky a{
+	color: #fff;
+	text-align: center;
+	display: block;
+	text-align: center;
+	padding: 20px 0;
+	font-size: 20px;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	transition: all 0.2s ease-in-out 0s;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.home-blogs .card.sticky a:hover{
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.card.featured{
+	height: 238px;
+	width: 100%;
+}
+.card.featured a{
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+}
+.card.featured .card-body {
+	float: left;
+	width: 50%;
+	color: #fff;
+	background: url("../images/pettern-3.png") repeat center center;
+	clip-path: polygon(0 0, 79% 0%, 100% 101%, 0% 100%);
+	display: flex;
+	padding-left: 3%;
+	padding-right: 13%;
+	flex-direction: column;
+	justify-content: center;
+}
+.fancybox__content {
+	border: 10px solid #fff;
+	border-radius: 6px;
+}
+.fancybox__content > .carousel__button.is-close {
+	top: -27px;
+	right: -21px;
+	border: 2px solid #fff;
+	background: #012C1F;
+}
+.sidebar-widgets .widget_block {
+	background: url("../images/pettern-1.png") repeat center center;
+	float: left;
+	width: 100%;
+	margin: 0 0 40px 0;
+}
+.sidebar-widgets .widget_block:last-child{
+	margin-bottom: 0;
+}
+.sidebar-widgets .widget-title{
+	padding: 15px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	text-transform: uppercase;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.sidebar-widgets .widget_block .wp-widget-group__inner-blocks{
+	padding: 15px;
+}
+.event-article figure{
+	float: left;
+	width: 70px;
+	height: 70px;
+	margin: 4px 10px 0 0;
+}
+.event-article .text{
+	overflow: hidden;
+}
+.event-article .text h5{
+	text-decoration: underline;
+}
+.event-article .text p{
+	line-height: normal;
+	color: rgba(255, 255, 255, 0.7);
+}
+.match-tabs{
+	background: url("../images/pettern-1.png") repeat center center;
+}
+.match-tabs .tab-pane{
+	padding: 30px;
+	color: rgba(255, 255, 255, 0.8);
+}
+.match-tabs .tab-pane p:last-child{
+	margin: 0;
+}
+.match-tabs .nav-tabs{
+	border: none;
+	padding: 0 25px;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.match-tabs .nav-tabs .nav-link{
+	font-size: 18px;
+	color: #fff;
+	font-weight: 600;
+	padding: 15px 25px;
+	border: none;
+	border-radius: 0;
+	font-family: 'Oswald', sans-serif;
+	clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+}
+.match-tabs .nav-tabs .nav-link.active{
+	background-color: #1B7D3B;
+}
+.datetime-widget .time-text{
+	font-size: 70px;
+	font-weight: 500;
+	word-spacing: 2px;
+	font-family: 'Oswald', sans-serif;
+}
+.more-events {
+	float: right;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	margin: 0 0 20px 0;
+	font-weight: 500;
+	text-decoration: underline !important;
+}
+
+.footer-widgets{
+	padding: 40px 0 20px 0;
+	background: url("../images/pettern-3.png") repeat center center;
+}
+.footer-widgets .widget_block{
+	text-align: center;
+}
+.footer-widgets .widget_block p,
+.footer-widgets .widget_block a{
+	color: rgba(255, 255, 255, 0.8);
+}
+.footer-widgets .widget_block a:hover{
+	text-decoration: underline !important;
+}
+.widget_nav_menu .widget-title{
+	font-size: 24px;
+	color: #fff;
+	margin: 0 0 25px 0;
+}
+.widget .menu,
+.sidebar-widgets .wp-block-categories{
+	padding: 0;
+	list-style: none;
+}
+.widget .menu li,
+.sidebar-widgets .wp-block-categories li{
+	position: relative;
+	padding: 0 0 0 15px;
+	margin: 10px 0;
+	transition: all 0.1s ease-in-out 0s;
+}
+.sidebar-widgets .wp-block-categories li{
+	margin: 20px 0;
+}
+.widget .menu li:hover,
+.sidebar-widgets .wp-block-categories li:hover{
+	padding: 0 0 0 18px;
+}
+.widget .menu li a{
+	color: rgba(255, 255, 255, 0.8);
+}
+.sidebar-widgets .wp-block-categories li a{
+	color: #fff;
+}
+.sidebar-widgets .wp-block-categories li a{
+	text-transform: uppercase;
+	font-size: 16px;
+	font-family: 'Oswald', sans-serif;
+}
+.widget .menu li:after,
+.sidebar-widgets .wp-block-categories li:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 6px;
+	height: 10px;
+	transition: all 0.1s ease-in-out 0s;
+	background: url("../images/icon-list.png") no-repeat center center;
+	transform: translateY(-50%);
+}
+.widget .menu li:hover:after,
+.sidebar-widgets .wp-block-categories li:hover:after{
+	left: 3px;
+}
+.footer-widgets .widget_block .wp-block-image {
+	margin: 15px 0 50px 0;
+	float: left;
+	width: 100%;
+}
+.copyright p{
+	color: rgba(255, 255, 255, 0.8);
+}
