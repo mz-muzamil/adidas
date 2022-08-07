@@ -1,0 +1,2 @@
+# Adidas WordPress Custom Theme
+
