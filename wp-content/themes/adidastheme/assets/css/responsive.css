@@ -1,25 +1,9 @@
 @media only screen and (min-width: 1400px) and (max-width: 1920px) {}
 
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
 	.container {
 		max-width: 100%;
 	}
-
-	.banner {
-		min-height: initial;
-		text-align: center;
-	}
-
-	.owl-nav .owl-prev {
-		left: 0;
-	}
-
-	.owl-nav .owl-next {
-		right: 0;
-	}
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
 	.banner {
 		min-height: initial;
 		text-align: center;
@@ -85,10 +69,6 @@
 		margin-top: 20px;
 	}
 
-	.card.sticky img,
-	.owl-carousel .owl-item img {
-		height: auto;
-	}
 	.datetime-widget .time-text {
 		font-size: 60px;
 	}
@@ -219,11 +199,6 @@
 
 	.banner .owl-dots {
 		bottom: 60px;
-	}
-
-	.card.sticky img,
-	.owl-carousel .owl-item img {
-		height: auto;
 	}
 	.copyright {
 		text-align: center;
@@ -357,9 +332,7 @@
 	.banner .owl-dots {
 		bottom: 20px;
 	}
-
-	.card.sticky img,
-	.owl-carousel .owl-item img {
+	.card.sticky figure{
 		height: auto;
 	}
 	.copyright {

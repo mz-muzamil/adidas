@@ -32,18 +32,43 @@ jQuery(document).ready(function ($) {
       },
       1000: {
         items: 3,
-      },      
+      },
       1200: {
         items: 4,
-      }
+      },
     },
   });
 
   Fancybox.bind("[data-fancybox]", {
     infinite: false,
     groupAttr: false,
+    Hash: false,
   });
 
-  $('[data-bs-toggle="tooltip"]').tooltip();
-  $("#demoTab").easyResponsiveTabs();
+  function next_prev_posts(first_post_id, last_post_id) {
+    jQuery.ajax({
+      type: "POST",
+      data: {
+        action: "get_next_prev_events",
+        data: [
+          { first_post_id: first_post_id },
+          { last_post_id: last_post_id },
+        ],
+      },
+      url: "http://localhost/adidas/wp-admin/admin-post.php",
+      success: function (data) {
+        console.log(data);
+      },
+    });
+  }
+
+  $(".prev-button").on("click", function () {
+    var first_post_id = $(".event-article").attr("data-first_post_id");
+    next_prev_posts(null, first_post_id);
+  });
+
+  $(".next-button").on("click", function () {
+    var last_post_id = $(".event-article").attr("data-last_post_id");
+    next_prev_posts(last_post_id, null);
+  });
 });

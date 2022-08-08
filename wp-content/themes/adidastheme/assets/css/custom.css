@@ -305,12 +305,9 @@ body {
 .post-block{
 	float: left;
 	width: 100%;
+	position: relative;
 	padding: 10px 10px 20px 10px;
 	background: url("../images/pettern-3.png") repeat center center;
-}
-.post-block .wp-post-image{
-	width: 100%;
-	height: 170px;
 }
 .sports-carousel .post-block a{
 	text-decoration: underline !important;
@@ -373,7 +370,6 @@ body {
 	border: none;
 	color: transparent;
 	background: url("../images/icon-search.png") no-repeat center center;
-	
 }
 .card.sticky{
 	border: none;
@@ -381,9 +377,13 @@ body {
 	background-color: transparent;
 	background: url("../images/pettern-1.png") repeat center center;
 }
+.card.sticky figure{
+	height: 162px;
+}
 .card.sticky img{
 	width: 100%;
-	height: 162px;
+	height: 100%;
+	object-fit: cover;
 }
 .card.sticky .card-body{
 	padding-bottom: 30px;
@@ -469,6 +469,11 @@ body {
 	height: 70px;
 	margin: 4px 10px 0 0;
 }
+.event-article figure img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 .event-article .text{
 	overflow: hidden;
 }
@@ -478,6 +483,14 @@ body {
 .event-article .text p{
 	line-height: normal;
 	color: rgba(255, 255, 255, 0.7);
+}
+.nav-btns {
+	display: inline-block;
+	padding: 5px 15px;
+	background-color: #09C647;
+	opacity: 0.5;
+	font-size: 24px;
+	color: #fff !important;
 }
 .match-tabs{
 	background: url("../images/pettern-1.png") repeat center center;
@@ -517,10 +530,22 @@ body {
 	float: right;
 	font-family: 'Oswald', sans-serif;
 	text-transform: uppercase;
-	margin: 0 0 20px 0;
+	margin: 20px 0 0 0;
 	font-weight: 500;
 	text-decoration: underline !important;
 }
+.nav-btns:hover{
+	opacity: 1;
+}
+.post-block figure{
+	height: 180px;
+}
+.post-block figure img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
 
 .footer-widgets{
 	padding: 40px 0 20px 0;

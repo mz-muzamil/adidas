@@ -115,7 +115,7 @@ function get_weather_data()
         <h2 class="text-center mb-4"><?php echo $response["main"]["temp"] ?><sup>&#8451;</sup></h2>
         <h6 class="text-end"><span class="float-start">Feels Like:</span> <?php echo $response["main"]["feels_like"]; ?><sup>&#8451;</sup></h6>
         <h6 class="text-end"><span class="float-start">Humidity:</span> <?php echo $response["main"]["humidity"]; ?>%</h6>
-        <h6 class="text-end"><span class="float-start">Visibility:</span> <?php echo $response["visibility"]/1000; ?>km</h6>
+        <h6 class="text-end"><span class="float-start">Visibility:</span> <?php echo $response["visibility"] / 1000; ?>km</h6>
         <h6 class="text-end"><span class="float-start">Pressure:</span> <?php echo $response["main"]["pressure"]; ?> mb</h6>
         <h6 class="text-end"><span class="float-start">Temp: Max - Min:</span> <?php echo $response["main"]["temp_min"] . " ~ " .  $response["main"]["temp_max"] ?><sup>&#8451;</sup></h6>
     </div>
@@ -126,3 +126,13 @@ function get_weather_data()
     return $contents;
 }
 add_shortcode('Weather', 'get_weather_data');
+
+
+
+function get_next_prev_event_posts($limit = 3, $date = '')
+{
+    global $wpdb, $post;
+
+    echo $limit;
+}
+add_action('admin_post_nopriv_get_next_prev_events', 'get_next_prev_event_posts');

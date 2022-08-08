@@ -89,13 +89,7 @@ function adidas_events()
     $start_time = get_post_meta($post->ID, 'event_start_time', true);
     $end_time = get_post_meta($post->ID, 'event_end_time', true);
 
-    $start_date_obj = DateTime::createFromFormat('Y-m-d', get_post_meta($post->ID, 'event_start_date', true), new DateTimeZone('EDT'));
-
-    if (!empty($start_date_obj)) {
-        $start_date = $start_date_obj->format($date_format);
-    } else {
-        $start_date = date($date_format);
-    }
+    $start_date = date($date_format);
 
     // Output the field
     $fields = '';
@@ -150,7 +144,7 @@ function adidas_save_events_meta($post_id, $post)
     // Now that we're authenticated, time to save the data.
     // This sanitizes the data from the field and saves it into an array $events_meta.
 
-    $start_date_obj = DateTime::createFromFormat($date_time_format, $_POST['event_start_date'], new DateTimeZone('EDT'));
+    $start_date_obj = DateTime::createFromFormat($date_time_format, $_POST['event_start_date']);
 
     $events_meta['event_start_date'] = $start_date_obj->format('Y-m-d');
     $events_meta['event_start_time'] = esc_textarea($_POST['event_start_time']);
@@ -228,12 +222,16 @@ function get_events_for_shortcode($atts)
         'port_per_page'
     );
 
-    $port_per_page = $atts['port_per_page'];
+    $port_per_page = !empty($atts['port_per_page']) ? $atts['port_per_page'] : '-1';
     $events = get_events($port_per_page);
 ?>
     <div class="row">
-        <?php foreach ($events as $event) {
-            if ($port_per_page == "") { ?>
+        <?php
+        $count = 0;
+        foreach ($events as $key => $event) {
+            $first_post_id = $key == (count($events) == 0) ? $event->ID : "";
+            $last_post_id = $key == (count($events) - 1) ? $event->ID : "";
+            if ($port_per_page == "-1") { ?>
                 <div class="col-xxl-3 mb-4">
                     <div class="post-block event-tile h-100">
                         <?php if (has_post_thumbnail($event->ID)) : ?>
@@ -246,13 +244,13 @@ function get_events_for_shortcode($atts)
                                 <a class="h5 text-white" href="<?php echo get_permalink($event->ID); ?>"><?php echo $event->post_title; ?></a>
                             </h5>
                             <p class="mb-0"><?php echo date("jS M, Y", strtotime($event->event_start_date)); ?></p>
-                            <p><?php echo $event->event_start_time . " - " . $event->event_end_time; ?></p>
+                            <p class="mb-0"><?php echo $event->event_start_time . " - " . $event->event_end_time; ?></p>
                         </div>
                     </div>
                 </div>
             <?php } else { ?>
                 <div class="col-xxl-12">
-                    <div class="event-article text-white mb-3" id="post-<?php echo $event->ID; ?>">
+                    <div class="event-article text-white mb-3" data-first_post_id="<?php echo $first_post_id; ?>" data-last_post_id="<?php echo $last_post_id; ?>" id="post-<?php echo $event->ID; ?>">
                         <?php if (has_post_thumbnail($event->ID)) : ?>
                             <figure>
                                 <img class="img-fluid" alt="event-thumbnail" src="<?php echo get_the_post_thumbnail_url($event->ID, 'full'); ?>">

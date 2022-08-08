@@ -52,7 +52,9 @@ get_header(); ?>
                 <?php if ($the_query->have_posts()) : ?>
                     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                         <div class="item post-block">
-                            <?php the_post_thumbnail("full"); ?>
+                            <figure>
+                                <?php the_post_thumbnail("full"); ?>
+                            </figure>
                             <h5 class="mt-4 mb-0"><a class="text-white" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
                         </div>
                     <?php endwhile;
@@ -80,7 +82,9 @@ get_header(); ?>
                         <?php } else { ?>
                             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="card sticky h-100">
-                                    <img alt="<?php echo  $case_study->post_title; ?>" src="<?php echo $thumbnail_img; ?>" />
+                                    <figure>
+                                        <img alt="<?php echo  $case_study->post_title; ?>" src="<?php echo $thumbnail_img; ?>" />
+                                    </figure>
                                     <div class="card-body text-white">
                                         <h4><?php echo $sticky_post->post_title; ?></h4>
                                         <p class="card-text"><?php echo $sticky_post->post_excerpt; ?></p>
