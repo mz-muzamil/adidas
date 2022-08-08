@@ -73,6 +73,28 @@ function adidas_theme_options_cb()
         </table>
         <?php submit_button("Save Options", "primary", "submit", true, null) ?>
     </form>
+
+    <h2>Show Homepage twitter feeds</h2>
+    <form action="options.php" method="POST">
+        <?php settings_fields('show_twitter_feeds'); ?>
+        <?php do_settings_sections('show_twitter_feeds'); ?>
+        <table class="form-table">
+            <tr>
+                <th>Twitter User Numeric Id</th>
+                <td>
+                    <input placeholder="1931563526" style="width: 100%;" type="text" name="twitter_user_id" value="<?php echo esc_attr(get_option('twitter_user_id')); ?>" />
+                </td>
+            </tr>
+            <tr>
+                <th>Bearer Token</th>
+                <td>
+                    <input style="width: 100%;" type="text" name="bearer_token" value="<?php echo esc_attr(get_option('bearer_token')); ?>" />
+                </td>
+            </tr>
+        </table>
+        <?php submit_button("Save Options", "primary", "submit", true, null) ?>
+    </form>
+
 <?php }
 
 function adidas_admin_init_cb()
@@ -85,6 +107,8 @@ function adidas_admin_init_cb()
     register_setting("tabs_content", "match_info");
     register_setting("tabs_content", "match_results");
     register_setting("tabs_content", "match_schedule");
+    register_setting("show_twitter_feeds", "bearer_token");
+    register_setting("show_twitter_feeds", "twitter_user_id");
 }
 
 function adidas_admin_menu()

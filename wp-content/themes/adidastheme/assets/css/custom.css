@@ -545,6 +545,12 @@ body {
 	width: 100%;
 	object-fit: cover;
 }
+.card-body.twitter-feeds{
+	overflow-y: auto;
+	max-height: 395px;
+	min-height: 395px;
+	height: 100%;
+}
 
 
 .footer-widgets{

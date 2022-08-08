@@ -4,7 +4,7 @@ include(get_template_directory() . "/inc/widgets.php");
 include(get_template_directory() . "/inc/theme_options.php");
 include(get_template_directory() . "/inc/events.php");
 include(get_template_directory() . "/inc/shortcode.php");
-
+include(get_template_directory() . "/inc/TwitterAPIExchange.php");
 
 function adidas_enqueue_script_styles()
 {
@@ -90,22 +90,12 @@ function get_all_sticky_posts()
     return $results;
 }
 
-function make_curl_call($url)
-{
-    $cn = curl_init();
-    curl_setopt($cn, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($cn, CURLOPT_URL, $url);    // get the contents using url
-    $weatherdata = curl_exec($cn); // execute the curl request
-    curl_close($cn); //close the cURL
-    return $weatherdata;
-}
-
 function get_weather_data()
 {
     ob_start();
 
     $url = "http://api.openweathermap.org/data/2.5/weather?q=Lahore,PK,PK&units=metric&appid=933c2411abf1aca12fe5e19659fe36cc";
-    $response = make_curl_call($url);
+    $response = make_curl_call($url, "GET", []);
     $response = json_decode($response, true);
     // echo "<pre>";
     // print_r($response);
@@ -119,7 +109,7 @@ function get_weather_data()
         <h6 class="text-end"><span class="float-start">Pressure:</span> <?php echo $response["main"]["pressure"]; ?> mb</h6>
         <h6 class="text-end"><span class="float-start">Temp: Max - Min:</span> <?php echo $response["main"]["temp_min"] . " ~ " .  $response["main"]["temp_max"] ?><sup>&#8451;</sup></h6>
     </div>
-<?php
+    <?php
 
     $contents = ob_get_contents();
     ob_end_clean();
@@ -136,3 +126,18 @@ function get_next_prev_event_posts($limit = 3, $date = '')
     echo $limit;
 }
 add_action('admin_post_nopriv_get_next_prev_events', 'get_next_prev_event_posts');
+
+
+
+function make_curl_call($url, $method, $headers)
+{
+    $curl_handle = curl_init();
+    curl_setopt($curl_handle, CURLOPT_URL, $url);
+    curl_setopt($curl_handle, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl_handle, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curl_handle, CURLOPT_FOLLOWLOCATION, 1);
+    $response = curl_exec($curl_handle);
+    curl_close($curl_handle);
+    return $response;
+}

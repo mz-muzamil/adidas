@@ -104,8 +104,9 @@ get_header(); ?>
                         <div class="col-xxl-6 col-xl-6 col-lg-12 col-md-6 col-sm-12 xs-12 mb-3">
                             <h2 class="text-white mb-3">Lates Tweets</h2>
                             <div class="card">
-                                <div class="card-body">
-                                    <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/assets/images/twitter-feeds.png' ?>" alt="">
+                                <div class="card-body twitter-feeds">
+                                    <?php echo do_shortcode("[show_tweets]"); ?>
+                                    <!-- <img class="img-fluid" src="<?php // echo get_template_directory_uri() . '/assets/images/twitter-feeds.png' ?>" alt=""> -->
                                 </div>
                             </div>
                         </div>
