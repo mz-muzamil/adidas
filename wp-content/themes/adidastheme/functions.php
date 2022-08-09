@@ -4,7 +4,6 @@ include(get_template_directory() . "/inc/widgets.php");
 include(get_template_directory() . "/inc/theme_options.php");
 include(get_template_directory() . "/inc/events.php");
 include(get_template_directory() . "/inc/shortcode.php");
-include(get_template_directory() . "/inc/TwitterAPIExchange.php");
 
 function adidas_enqueue_script_styles()
 {
