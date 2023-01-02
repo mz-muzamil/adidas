@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * adidastheme search page template
+ *
+ * @package adidastheme
+ */
+
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
+
 get_header(); ?>
 <div class="container mt-5">
     <h1 class="text-white mb-4">
@@ -26,13 +33,14 @@ get_header(); ?>
                     <?php } ?>
 
                     <div class="text pb-3 border-bottom <?php if (!has_post_thumbnail()) echo "m-0" ?>">
-                        <h4 class="text-white"><a class="h4 text-white" href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></h4>
+                        <h4 class="text-white"><a class="h4 text-white" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                         <div class="text-white"><?php the_excerpt(); ?></div>
                         <a class="text-white" href="<?php the_permalink(); ?>">Read More</a>
                     </div>
                 </article>
             <?php }
             ?>
+            <?php adidas_pagination(); ?>
         </div>
     </div>
 </div>

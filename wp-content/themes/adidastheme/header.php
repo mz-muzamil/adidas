@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * The header for our theme
+ *
+ * @package adidastheme
+ */
+
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 ?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -28,6 +35,7 @@ defined('ABSPATH') || exit;
                                     /
                                     <a data-fancybox="gallery" href="<?php echo get_option("watch_now_video_url"); ?>" class="text-green">WATCH NOW</a>
                                 <?php } ?>
+                                <a href="javascript:;" class="float-end close"><i class="fa-solid fa-circle-xmark"></i></a>
                             </div>
                         </div>
                     </div>
@@ -40,24 +48,23 @@ defined('ABSPATH') || exit;
                     <div class="row align-items-center gy-3">
                         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div class="logo">
-                                <?php if (!has_custom_logo()) { ?>
-
-                                    <?php if (is_front_page() && is_home()) : ?>
-
-                                        <h2 class="text-white mb-0"><a rel="home" href="<?php echo esc_url(home_url('/')); ?>" itemprop="url"><?php bloginfo('name'); ?></a></h2>
-
-                                    <?php else : ?>
-
-                                        <a class="text-white h2 mb-0" rel="home" href="<?php echo esc_url(home_url('/')); ?>" itemprop="url"><?php bloginfo('name'); ?></a>
-
-                                    <?php endif; ?>
-
-                                <?php
-                                } else {
-                                    the_custom_logo();
-                                }
-                                ?>
-                                <!-- end custom logo -->
+                                <div class="logo-inner">
+                                    <?php if (!has_custom_logo()) { ?>
+                                        <?php if (is_front_page() && is_home()) : ?>
+                                            <a class="text-white h2 mb-0" rel="home" href="<?php echo esc_url(home_url('/')); ?>" itemprop="url">
+                                                <img src="<?php echo get_template_directory_uri() . "/assets/images/logo.png"; ?>" alt="logo">
+                                            </a>
+                                        <?php else : ?>
+                                            <a class="text-white h2 mb-0" rel="home" href="<?php echo esc_url(home_url('/')); ?>" itemprop="url">
+                                                <img src="<?php echo get_template_directory_uri() . "/assets/images/logo.png"; ?>" alt="logo">
+                                            </a>
+                                        <?php endif; ?>
+                                    <?php
+                                    } else {
+                                        the_custom_logo();
+                                    }
+                                    ?>
+                                </div>
                             </div>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_navigation" aria-controls="main_navigation" aria-expanded="false" aria-label="Toggle navigation">
                                 <i class="fa-solid fa-bars"></i>

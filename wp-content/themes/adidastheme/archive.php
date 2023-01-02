@@ -1,7 +1,13 @@
 <?php
+/**
+ * The template for displaying archive pages
+ *
+ * @package adidastheme
+ */
 
 // Exit if accessed directly.
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
+
 get_header(); ?>
 <div class="container mt-5">
     <div class="row">
@@ -9,12 +15,10 @@ get_header(); ?>
             <?php
             if (have_posts()) {
             ?>
-
                 <?php
                 the_archive_title('<h1 class="text-white mb-4">', '</h1>');
                 the_archive_description('<div class="taxonomy-description">', '</div>');
                 ?>
-
             <?php
                 // Start the loop.
                 while (have_posts()) {

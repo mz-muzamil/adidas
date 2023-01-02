@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * The template for displaying all single posts
+ *
+ * @package adidastheme
+ */
+
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
+
 get_header(); ?>
 <div class="container mt-5">
     <div class="row">
@@ -29,6 +36,19 @@ get_header(); ?>
                 </div>
             <?php }
             ?>
+            <?php
+            if (comments_open()) { ?>
+                <div class="post-comments">
+                    <?php comments_template(); ?>
+                </div>
+            <?php }
+            ?>
+            <div class="postlinks bg-white p-2 full-width mt-4">
+                <?php
+                previous_post_link("<span class='btn btn-success pagination-link float-start'>%link</span>", "Previous Post");
+                next_post_link("<span class='btn btn-success pagination-link float-end'>%link</span>", "Next Post");
+                ?>
+            </div>
         </div>
         <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <aside class="sidebar-widgets">

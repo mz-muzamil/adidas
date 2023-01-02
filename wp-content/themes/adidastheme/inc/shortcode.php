@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * adidastheme events custom post type
+ *
+ * @package adidastheme
+ */
+
+// Exit if accessed directly.
+defined('ABSPATH') || exit;
+
 function link_shortcode($atts)
 {
     ob_start();

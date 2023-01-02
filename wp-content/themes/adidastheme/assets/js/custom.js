@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
   $(".home-banner").owlCarousel({
     loop: true,
-    margin: 10,
+    margin: 0,
     nav: true,
     items: 1,
     autoplay: true,
@@ -71,4 +71,9 @@ jQuery(document).ready(function ($) {
     var last_post_id = $(".event-article").attr("data-last_post_id");
     next_prev_posts(last_post_id, null);
   });
+
+  $("#commentform p input[type=text], #commentform p textarea, #commentform p input[type=email], #commentform p input[type=url]").addClass("form-control");
+  $("#commentform p input[type=submit]").addClass("btn btn-success");
+  $("#commentform p input[type=submit]").val("Submit");
+  
 });

@@ -1,9 +1,22 @@
 <?php
+
+/**
+ * adidastheme functions and definitions
+ *
+ * @package adidastheme
+ */
+
+// Exit if accessed directly.
+defined('ABSPATH') || exit;
+
 include(get_template_directory() . "/inc/add_theme_support.php");
 include(get_template_directory() . "/inc/widgets.php");
 include(get_template_directory() . "/inc/theme_options.php");
 include(get_template_directory() . "/inc/events.php");
 include(get_template_directory() . "/inc/shortcode.php");
+include(get_template_directory() . "/inc/pagination.php");
+include(get_template_directory() . "/inc/weather_widget.php");
+include(get_template_directory() . "/inc/datetime_widget.php");
 
 function adidas_enqueue_script_styles()
 {
@@ -31,12 +44,20 @@ function load_custom_wp_admin_style()
 {
     wp_register_style('date_date_time_css', get_template_directory_uri() . '/lib/datetimepicker/jquery.datetimepicker.css', false, '1.0.0');
     wp_enqueue_style('date_date_time_css');
+    wp_register_style('admin_custom_css', get_template_directory_uri() . '/assets/css/admin-custom.css', false, '1.0.0');
+    wp_enqueue_style('admin_custom_css');
     wp_register_script('date_date_time_moment_js', get_template_directory_uri() . '/lib/datetimepicker/moment.js', ['jquery'], '1.0.0', true);
     wp_enqueue_script('date_date_time_moment_js');
+    wp_register_script('jquery_repeater_js', get_template_directory_uri() . '/lib/jquery-repeater/jquery.repeater.min.js', ['jquery'], '1.0.0', true);
+    wp_enqueue_script('jquery_repeater_js');
+    wp_register_script('admin_custom_scripts', get_template_directory_uri() . '/assets/js/admin-custom.js', ['jquery'], '1.0.0', true);
+    wp_enqueue_script('admin_custom_scripts');
+    
     wp_register_script('date_date_time_js', get_template_directory_uri() . '/lib/datetimepicker/jquery.datetimepicker.full.js', ['jquery', 'date_date_time_moment_js'], '1.0.0', true);
     wp_enqueue_script('date_date_time_js');
     wp_register_script('date_date_time_custom_js', get_template_directory_uri() . '/lib/datetimepicker/custom-datetimepicker-script.js', ['jquery', 'date_date_time_js'], '1.0.0', true);
     wp_enqueue_script('date_date_time_custom_js');
+    wp_enqueue_media(); 
 }
 
 add_action('admin_enqueue_scripts', 'load_custom_wp_admin_style');
@@ -82,51 +103,13 @@ function get_all_sticky_posts()
     rsort($sticky);
     $args = array(
         'post_status' => 'publish',
-        'posts_per_page' => 4,
+        'posts_per_page' => 1,
+        'orderby'   => 'rand',
         'post__in' => $sticky
     );
     $results  = get_posts($args);
     return $results;
 }
-
-function get_weather_data()
-{
-    ob_start();
-
-    $url = "http://api.openweathermap.org/data/2.5/weather?q=Lahore,PK,PK&units=metric&appid=933c2411abf1aca12fe5e19659fe36cc";
-    $response = make_curl_call($url, "GET", []);
-    $response = json_decode($response, true);
-    // echo "<pre>";
-    // print_r($response);
-?>
-    <div class="weather-info text-white">
-        <h1 class="text-center mb-2"><?php echo $response["name"] ?></h1>
-        <h2 class="text-center mb-4"><?php echo $response["main"]["temp"] ?><sup>&#8451;</sup></h2>
-        <h6 class="text-end"><span class="float-start">Feels Like:</span> <?php echo $response["main"]["feels_like"]; ?><sup>&#8451;</sup></h6>
-        <h6 class="text-end"><span class="float-start">Humidity:</span> <?php echo $response["main"]["humidity"]; ?>%</h6>
-        <h6 class="text-end"><span class="float-start">Visibility:</span> <?php echo $response["visibility"] / 1000; ?>km</h6>
-        <h6 class="text-end"><span class="float-start">Pressure:</span> <?php echo $response["main"]["pressure"]; ?> mb</h6>
-        <h6 class="text-end"><span class="float-start">Temp: Max - Min:</span> <?php echo $response["main"]["temp_min"] . " ~ " .  $response["main"]["temp_max"] ?><sup>&#8451;</sup></h6>
-    </div>
-    <?php
-
-    $contents = ob_get_contents();
-    ob_end_clean();
-    return $contents;
-}
-add_shortcode('Weather', 'get_weather_data');
-
-
-
-function get_next_prev_event_posts($limit = 3, $date = '')
-{
-    global $wpdb, $post;
-
-    echo $limit;
-}
-add_action('admin_post_nopriv_get_next_prev_events', 'get_next_prev_event_posts');
-
-
 
 function make_curl_call($url, $method, $headers)
 {
@@ -139,4 +122,45 @@ function make_curl_call($url, $method, $headers)
     $response = curl_exec($curl_handle);
     curl_close($curl_handle);
     return $response;
+}
+
+add_action("wp_ajax_home_slider", "home_slider");
+function home_slider()
+{
+    echo "<pre>";
+    print_r($_POST["data"]);
+    wp_die();
+}
+
+add_action('admin_post_home_slider_action_hook', 'home_slider_func');
+function home_slider_func()
+{
+
+
+    echo "<pre>";
+    print_r($_POST);
+    print_r($_FILES);
+    exit;
+
+    $filename = $_FILES["slide_image"]["name"];
+    $tempname = $_FILES["slide_image"]["tmp_name"];
+
+
+
+    $folder = "./image/" . $filename;
+
+    // Now let's move the uploaded image into the folder: image
+    if (move_uploaded_file($tempname, $folder)) {
+        echo "<h3>  Image uploaded successfully!</h3>";
+    } else {
+        echo "<h3>  Failed to upload image!</h3>";
+    }
+
+
+    exit;
+
+    update_option('homeSlider', serialize($_POST));
+    $url = admin_url("/themes.php?page=adidas-theme-options");
+    wp_redirect($url);
+    exit;
 }

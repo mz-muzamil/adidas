@@ -3,7 +3,7 @@
 /**
  * Post rendering content according to caller of get_template_part
  *
- * @package Understrap
+ * @package adidastheme
  */
 
 // Exit if accessed directly.

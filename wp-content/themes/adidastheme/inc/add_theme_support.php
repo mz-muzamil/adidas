@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * adidastheme Add theme support definitions
+ *
+ * @package adidastheme
+ */
+
+// Exit if accessed directly.
+defined('ABSPATH') || exit;
+
 if (!function_exists('adidas_setup_theme')) {
     function adidas_setup_theme()
     {

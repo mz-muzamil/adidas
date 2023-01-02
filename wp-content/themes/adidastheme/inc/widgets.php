@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * adidastheme sibebar definitions
+ *
+ * @package adidastheme
+ */
+
+// Exit if accessed directly.
+defined('ABSPATH') || exit;
+
 if (!function_exists('adidas_register_sidebars')) {
     function adidas_register_sidebars()
     {
@@ -43,8 +53,10 @@ if (!function_exists('adidas_widget_classes')) {
                 $widget_classes .= ' col-md-3';
             } elseif ($widget_count === 6) {
                 $widget_classes .= ' col-md-2';
-            } elseif ($widget_count >= 3) {
+            } elseif ($widget_count === 3) {
                 $widget_classes .= ' col-md-4';
+            } elseif ($widget_count === 4) {
+                $widget_classes .= ' col-md-3';
             } elseif ($widget_count === 2) {
                 $widget_classes .= ' col-md-6';
             } elseif ($widget_count === 1) {
@@ -56,3 +68,12 @@ if (!function_exists('adidas_widget_classes')) {
     }
 }
 add_filter('dynamic_sidebar_params', 'adidas_widget_classes');
+
+
+function get_next_prev_event_posts($limit = 3, $date = '')
+{
+    global $wpdb, $post;
+
+    echo $limit;
+}
+add_action('admin_post_nopriv_get_next_prev_events', 'get_next_prev_event_posts');

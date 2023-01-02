@@ -2,6 +2,7 @@
 
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
+
 get_header(); ?>
 <div class="container mt-5">
     <h1 class="text-white mb-3">Sports</h1>
@@ -14,7 +15,9 @@ get_header(); ?>
             <?php while ($query->have_posts()) : $query->the_post(); ?>
                 <div class="col-md-2 mb-4">
                     <div class="item post-block">
-                        <?php the_post_thumbnail("full"); ?>
+                        <figure class="text-center">
+                            <?php the_post_thumbnail("full"); ?>
+                        </figure>
                         <h5 class="mt-4 mb-0"><a class="text-white" href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></h5>
                     </div>
                 </div>

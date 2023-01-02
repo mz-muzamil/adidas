@@ -1,8 +1,13 @@
 <?php
-
 /**
- * Registers the event post type.
+ *  Registers the event post type.
+ *
+ * @package adidastheme
  */
+
+// Exit if accessed directly.
+defined('ABSPATH') || exit;
+
 function adidas_event_post_type()
 {
 

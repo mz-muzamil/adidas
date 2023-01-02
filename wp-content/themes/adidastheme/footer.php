@@ -1,3 +1,14 @@
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * @package adidastheme
+ */
+
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+?>
+
 </section>
 <footer class="footer full-width">
     <div class="footer-widgets full-width">
